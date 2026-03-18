@@ -1,29 +1,49 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <title>Ejercicio 15</title>
+<meta charset="UTF-8">
+<title>Tabla sencilla</title>
+<style>
+  table { border-collapse: collapse; width: 60%; }
+  th, td { border: 1px solid #000; padding: 8px; text-align: center; }
+  th { background-color: #eee; }
+</style>
 </head>
 <body>
 
-<h1>Tabla de ejemplo</h1>
+<h1>Su pedido</h1>
 
-<table border="1">
-    <tr>
-        <th>Nombre</th>
-        <th>Edad</th>
-        <th>Ciudad</th>
-    </tr>
-    <tr>
-        <td>Ana</td>
-        <td>20</td>
-        <td>Madrid</td>
-    </tr>
-    <tr>
-        <td>Luis</td>
-        <td>25</td>
-        <td>Sevilla</td>
-    </tr>
+<table>
+  <tr>
+    <th>Nombre producto</th>
+    <th>Precio unitario</th>
+    <th>Unidades</th>
+    <th>Subtotal</th>
+  </tr>
+  <tr>
+    <td>Reproductor MP3 (80 GB)</td>
+    <td>192.02</td>
+    <td>1</td>
+    <td>192.02</td>
+  </tr>
+  <tr>
+    <td>Fundas de colores</td>
+    <td>2.50</td>
+    <td>5</td>
+    <td>12.50</td>
+  </tr>
+  <tr>
+    <td>Reproductor de radio & control remoto</td>
+    <td>12.99</td>
+    <td>1</td>
+    <td>12.99</td>
+  </tr>
+  <tr>
+    <td><strong>TOTAL</strong></td>
+    <td>-</td>
+    <td><strong>7</strong></td>
+    <td><strong>207.51</strong></td>
+  </tr>
 </table>
 
 </body>
