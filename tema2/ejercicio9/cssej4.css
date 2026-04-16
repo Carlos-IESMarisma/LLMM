@@ -1,0 +1,51 @@
+.contenedor {
+  position: relative;
+  width: 500px;
+  height: 300px;
+  background-color: #ccc;
+  margin: auto;
+}
+
+.uno {
+  position: absolute;
+  bottom: 60px;
+  left: 40px;
+  width: 420px;
+  height: 80px;
+  background-color: yellow;
+  font-size: 50px;
+  z-index: 1;
+}
+
+.dos {
+  position: absolute;
+  top: 60px;
+  left: 40px;
+  width: 420px;
+  height: 80px;
+  background-color: red;
+  font-size: 50px;
+  z-index: 1;
+}
+
+.tres {
+  position: absolute;
+  top: 20px;
+  left: 120px;
+  width: 120px;
+  height: 260px;
+  background-color: blue;
+  font-size: 50px;
+  z-index: 2;
+}
+
+.cuatro {
+  position: absolute;
+  top: 20px;
+  right: 60px;
+  width: 120px;
+  height: 260px;
+  background-color: green;
+  font-size: 50px;
+  z-index: 2;
+}
