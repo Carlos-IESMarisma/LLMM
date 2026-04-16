@@ -64,4 +64,4 @@ Este repositorio incluye actividades llevadas a cabo en el módulo de lenguaje d
 | - [Ejercicio 5 - HTML](tema2/ejercicio5.html) |
 | - [Ejercicio 6 - HTML](tema2/ejercicio6.css) |
 | - [Ejercicio 9 - HTML](tema2/ejercicio9) |
-| - [Ejercicio 12 - HTML]([tema2/ejercicio12.html](https://carlos-iesmarisma.github.io/webej12/)) |
+| - [Ejercicio 12 - HTML](https://carlos-iesmarisma.github.io/webej12/) |
