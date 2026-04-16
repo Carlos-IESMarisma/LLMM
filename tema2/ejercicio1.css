@@ -1,0 +1,71 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="esp">
+<head>
+    <meta charset="UTF-8">
+    <title>Curriculum Vitae</title>
+    <link rel="stylesheet" href="MyStyle.css">
+</head>
+<body>
+
+    <div class="container">
+        <h1>CURRICULUM VITAE</h1>
+
+        <h2>Datos Personales</h2>
+        <p><span class="label">Nombre:</span> Carlos</p>
+        <p><span class="label">Surname:</span> Azamat</p>
+        <p><span class="label">Fecha de nacimiento:</span> 22.10.04</p>
+        <p><span class="label">Lugar de nacimiento:</span> Huelva, España</p>
+
+        <h2>EDUCACION</h2>
+        <p><span class="años">2025-2026</span> Ciclo formativo de grado superior DAW en Huelva</p>
+        <p><span class="años">2015-2021</span> Secundaria "Lindenauschule" en Frankfurt</p>
+        <p><span class="años">2009-2015</span> Primaria</p>
+
+        <h2>Experiencia Profesional</h2>
+        <p><span class="años">2025</span> Socorrista en Playa Cartaya, Huelva</p>
+
+    </div>
+
+</body>
+</html>
+
+
+/* MyStyle.css */
+body {
+    font-family: Georgia, serif;
+    background-color: #ffffff;
+}
+
+.container {
+    width: 700px;
+    margin: auto;
+}
+
+h1 {
+    color: blue;
+    background-color: lightgray;
+    font-weight: bold;
+    font-size: 24px;
+    letter-spacing: 1.6em;
+    word-spacing: 2em;
+    text-align: center;
+    padding: 10px;
+}
+
+h2 {
+    color: darkred;
+    font-size: 18px;
+    letter-spacing: 1.4em;
+    margin-top: 30px;
+}
+
+.label {
+    font-style: italic;
+}
+
+.years {
+    font-weight: bold;
+    display: inline-block;
+    width: 120px;
+}
