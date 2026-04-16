@@ -15,7 +15,7 @@ Este repositorio incluye actividades llevadas a cabo en el módulo de lenguaje d
 
 ---
 
-## Tema 1 - Nombre tema 1
+## Tema 1 - HTML
 
 | Ejercicio |
 |----------|
@@ -53,7 +53,7 @@ Este repositorio incluye actividades llevadas a cabo en el módulo de lenguaje d
 
 
 
-## Tema 2 - Nombre tema 2
+## Tema 2 - CSS
 
 | Ejercicio |
 |----------|
