@@ -67,5 +67,7 @@ Este repositorio incluye actividades llevadas a cabo en el módulo de lenguaje d
 | - [Ejercicio 12 - HTML](https://carlos-iesmarisma.github.io/webej12/) |
 
 ## Tema 2 - Practica
+| Practica |
+|----------|
 | - [Practica U2 - HTML](https://carlos-iesmarisma.github.io/webBootstrap/) |
 
