@@ -5,7 +5,7 @@ Este repositorio incluye actividades llevadas a cabo en el módulo de lenguaje d
 
 ---
 
-## Tema 0 - Nombre tema 0
+## Tema 0 - Introducción
 
 | Ejercicio | Descripción |
 |----------|------------|
@@ -65,3 +65,6 @@ Este repositorio incluye actividades llevadas a cabo en el módulo de lenguaje d
 | - [Ejercicio 6 - HTML](tema2/ejercicio6.css) |
 | - [Ejercicio 9 - HTML](tema2/ejercicio9) |
 | - [Ejercicio 12 - HTML](https://carlos-iesmarisma.github.io/webej12/) |
+
+## Tema 2 - Practica
+| - [Practica U2 - HTML]
