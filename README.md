@@ -19,7 +19,7 @@ Este repositorio incluye actividades llevadas a cabo en el módulo de lenguaje d
 
 | Ejercicio |
 |----------|
-| - [Ejercicio 1 - HTML](tema1/ejercicio1.html) |
+| - [Ejercicio 1 - HTML](Tema1/ejercicio1.html) |
 | - [Ejercicio 2 - HTML](tema1/ejercicio2.html) |
 | - [Ejercicio 3 - HTML](tema1/ejercicio3.html) |
 | - [Ejercicio 4 - HTML](tema1/ejercicio4.html) |
