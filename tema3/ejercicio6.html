@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Exercise 6 - Random Quotes</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #1a1a2e, #16213e, #0f3460);
+            font-family: 'Georgia', serif;
+            color: white;
+        }
+        .card {
+            background: rgba(255,255,255,0.08);
+            border: 1px solid rgba(255,255,255,0.15);
+            border-radius: 16px;
+            padding: 48px 40px;
+            max-width: 600px;
+            width: 90%;
+            text-align: center;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+        }
+        h1 { font-size: 1.2rem; letter-spacing: 0.2em; text-transform: uppercase; color: #a0c4ff; margin-bottom: 32px; }
+        .quote-icon { font-size: 3rem; opacity: 0.3; margin-bottom: 8px; }
+        #quoteText {
+            font-size: 1.4rem;
+            line-height: 1.7;
+            margin-bottom: 20px;
+            min-height: 80px;
+            transition: opacity 0.4s;
+        }
+        #quoteAuthor {
+            font-size: 1rem;
+            color: #a0c4ff;
+            font-style: italic;
+            margin-bottom: 32px;
+            min-height: 24px;
+        }
+        button {
+            padding: 14px 36px;
+            font-size: 1rem;
+            border: none;
+            border-radius: 50px;
+            background: linear-gradient(90deg, #4a90e2, #7b2ff7);
+            color: white;
+            cursor: pointer;
+            letter-spacing: 0.05em;
+            transition: transform 0.1s, box-shadow 0.2s;
+            box-shadow: 0 4px 20px rgba(74,144,226,0.4);
+        }
+        button:hover { transform: translateY(-2px); box-shadow: 0 8px 28px rgba(74,144,226,0.5); }
+        button:active { transform: translateY(0); }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <h1> Random Quotes</h1>
+        <div class="quote-icon">"</div>
+        <p id="quoteText">Click the button to get inspired!</p>
+        <p id="quoteAuthor"></p>
+        <button onclick="showRandomQuote()">New Quote</button>
+    </div>
+
+    <script>
+        const quotes = [
+            { text: "The only way to do great work is to love what you do.", author: "Steve Jobs" },
+            { text: "In the middle of every difficulty lies opportunity.", author: "Albert Einstein" },
+            { text: "It does not matter how slowly you go as long as you do not stop.", author: "Confucius" },
+            { text: "Life is what happens when you're busy making other plans.", author: "John Lennon" },
+            { text: "The future belongs to those who believe in the beauty of their dreams.", author: "Eleanor Roosevelt" },
+            { text: "It always seems impossible until it's done.", author: "Nelson Mandela" },
+            { text: "Do one thing every day that scares you.", author: "Eleanor Roosevelt" },
+            { text: "Whether you think you can or you think you can't, you're right.", author: "Henry Ford" },
+            { text: "The best time to plant a tree was 20 years ago. The second best time is now.", author: "Chinese Proverb" },
+            { text: "An unexamined life is not worth living.", author: "Socrates" }
+        ];
+
+        function showRandomQuote() {
+            const quoteText = document.getElementById("quoteText");
+            const quoteAuthor = document.getElementById("quoteAuthor");
+            quoteText.style.opacity = 0;
+            setTimeout(() => {
+                const random = quotes[Math.floor(Math.random() * quotes.length)];
+                quoteText.innerHTML = random.text;
+                quoteAuthor.innerHTML = "— " + random.author;
+                quoteText.style.opacity = 1;
+            }, 300);
+        }
+
+        // Show one on load
+        showRandomQuote();
+    </script>
+</body>
+</html>
