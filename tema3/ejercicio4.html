@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Exercise 4 - Variables</title>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 20px; max-width: 600px; }
+        .box { border: 1px solid #ccc; border-radius: 6px; padding: 15px; margin: 15px 0; background: #f9f9f9; }
+        input[type="text"], input[type="number"] { padding: 8px; font-size: 15px; width: 200px; border-radius: 4px; border: 1px solid #aaa; }
+        button { padding: 8px 16px; margin-left: 8px; cursor: pointer; border-radius: 4px; background: #4a90e2; color: white; border: none; font-size: 14px; }
+        .result { margin-top: 10px; font-weight: bold; color: #222; min-height: 24px; }
+    </style>
+</head>
+<body>
+    <h1>Exercise 4 — Working with Variables</h1>
+
+    <div class="box">
+        <h3>Text Variable</h3>
+        <label>Enter your name: </label>
+        <input type="text" id="textInput" placeholder="e.g. Alice">
+        <button onclick="showText()">Show</button>
+        <p class="result" id="textResult"></p>
+    </div>
+
+    <!-- Number variable -->
+    <div class="box">
+        <h3>Number Variable</h3>
+        <label>Enter a number: </label>
+        <input type="number" id="numInput" placeholder="e.g. 42">
+        <button onclick="showNumber()">Show</button>
+        <p class="result" id="numResult"></p>
+    </div>
+
+    <div class="box">
+        <h3>Add Two Numbers</h3>
+        <input type="number" id="num1" placeholder="Number 1" style="width:120px">
+        +
+        <input type="number" id="num2" placeholder="Number 2" style="width:120px">
+        <button onclick="addNumbers()">Calculate</button>
+        <p class="result" id="addResult"></p>
+    </div>
+
+    <script>
+        function showText() {
+            var name = document.getElementById("textInput").value;
+            document.getElementById("textResult").innerHTML = "Hello, <em>" + name + "</em>!";
+        }
+
+        function showNumber() {
+            var num = document.getElementById("numInput").value;
+            document.getElementById("numResult").innerHTML = "The number you entered is: <strong>" + num + "</strong>";
+        }
+
+        function addNumbers() {
+            var a = parseFloat(document.getElementById("num1").value);
+            var b = parseFloat(document.getElementById("num2").value);
+            var sum = a + b;
+            document.getElementById("addResult").innerHTML = a + " + " + b + " = <strong>" + sum + "</strong>";
+        }
+    </script>
+</body>
+</html>
