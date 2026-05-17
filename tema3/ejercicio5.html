@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Exercise 5 - Buttons</title>
+    <style>
+        body { font-family: Georgia, serif; padding: 24px; max-width: 700px; }
+        h2 { border-bottom: 2px solid #ddd; padding-bottom: 6px; }
+        .group { margin: 20px 0; padding: 16px; border: 1px solid #ddd; border-radius: 8px; background: #fafafa; }
+        button { padding: 8px 16px; margin: 4px; cursor: pointer; border-radius: 4px; border: 1px solid #999; background: #e8e8e8; font-size: 14px; }
+        button:hover { background: #d0d0d0; }
+        #myParagraph { padding: 12px; border: 1px dashed #aaa; border-radius: 4px; background: white; font-size: 16px; }
+        #myImage { width: 200px; height: 140px; object-fit: cover; display: block; margin: 10px 0; border-radius: 6px; }
+        #myDiv { padding: 12px; border: 1px dashed #aaa; border-radius: 4px; background: white; min-height: 40px; font-size: 15px; }
+    </style>
+</head>
+<body>
+    <h1>Exercise 5 — Three Groups of Buttons</h1>
+
+    <!-- GROUP A: Font style -->
+    <div class="group">
+        <h2>A. Font Style</h2>
+        <p id="myParagraph">This paragraph will change its font style!</p>
+        <button onclick="setFont('normal')">Normal</button>
+        <button onclick="setFont('italic')">Italic</button>
+        <button onclick="setFont('bold')">Bold</button>
+    </div>
+
+    <!-- GROUP B: Image src -->
+    <div class="group">
+        <h2>B. Change Image</h2>
+        <img id="myImage" src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/47/PNG_transparency_demonstration_1.png/280px-PNG_transparency_demonstration_1.png" alt="Image">
+        <button onclick="setImage('https://upload.wikimedia.org/wikipedia/commons/thumb/4/47/PNG_transparency_demonstration_1.png/280px-PNG_transparency_demonstration_1.png')">Image 1</button>
+        <button onclick="setImage('https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/Camponotus_flavomarginatus_ant.jpg/640px-Camponotus_flavomarginatus_ant.jpg')">Image 2</button>
+        <button onclick="setImage('https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Biome_types_graph.svg/640px-Biome_types_graph.svg')">Image 3</button>
+    </div>
+
+    <!-- GROUP C: Messages -->
+    <div class="group">
+        <h2>C. Messages</h2>
+        <div id="myDiv">Click a button to show a message.</div>
+        <button onclick="setMessage(' Welcome to JavaScript!')">Message 1</button>
+        <button onclick="setMessage(' You are learning fast!')">Message 2</button>
+        <button onclick="setMessage(' Keep practicing every day!')">Message 3</button>
+    </div>
+
+    <script>
+        function setFont(style) {
+            var p = document.getElementById("myParagraph");
+            p.style.fontStyle = (style === 'italic') ? 'italic' : 'normal';
+            p.style.fontWeight = (style === 'bold') ? 'bold' : 'normal';
+        }
+
+        function setImage(src) {
+            document.getElementById("myImage").src = src;
+        }
+
+        function setMessage(msg) {
+            document.getElementById("myDiv").innerHTML = msg;
+        }
+    </script>
+</body>
+</html>
