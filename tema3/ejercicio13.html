@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>DOM Ex2 - Form</title>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 30px; max-width: 500px; }
+        .form-group { margin: 12px 0; }
+        label { display: block; font-weight: bold; margin-bottom: 4px; color: #555; }
+        input[type="text"] {
+            width: 100%; padding: 10px; font-size: 15px;
+            border: 1px solid #ccc; border-radius: 6px;
+        }
+        button {
+            margin-top: 16px; padding: 10px 28px; font-size: 1rem;
+            background: #4a90e2; color: white; border: none;
+            border-radius: 6px; cursor: pointer;
+        }
+        button:hover { background: #357abd; }
+        #greeting {
+            margin-top: 20px; padding: 16px;
+            background: #eef4ff; border-left: 4px solid #4a90e2;
+            border-radius: 4px; font-size: 1.1rem;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <h1>DOM Exercise 2 — Form</h1>
+
+    <div class="form-group">
+        <label for="firstName">First name:</label>
+        <input type="text" id="firstName" placeholder="e.g. Ana">
+    </div>
+    <div class="form-group">
+        <label for="lastName">Last name:</label>
+        <input type="text" id="lastName" placeholder="e.g. García">
+    </div>
+
+    <button onclick="sendData()">Send data</button>
+
+    <div id="greeting"></div>
+
+    <script>
+        function sendData() {
+            var firstName = document.getElementById("firstName").value.trim();
+            var lastName = document.getElementById("lastName").value.trim();
+
+            if (!firstName || !lastName) {
+                alert("Please fill in both fields.");
+                return;
+            }
+
+            var msg = "Hello " + firstName + " " + lastName + ", thank you for completing the form!";
+            var greetingEl = document.getElementById("greeting");
+            greetingEl.innerHTML = "👋 " + msg;
+            greetingEl.style.display = "block";
+        }
+    </script>
+</body>
+</html>
