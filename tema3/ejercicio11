@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>DOM Ex1 - Basics</title>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 20px; max-width: 700px; }
+        #output { background: #eef4ff; border: 1px solid #a0b4f0; border-radius: 6px; padding: 16px; margin-top: 16px; }
+        table { border-collapse: collapse; width: 100%; }
+        td, th { border: 1px solid #a0b4f0; padding: 8px 12px; text-align: left; }
+        th { background: #4a90e2; color: white; }
+        tr:nth-child(even) { background: #dce8ff; }
+        button { padding: 8px 18px; background: #4a90e2; color: white; border: none; border-radius: 4px; cursor: pointer; margin-top: 16px; }
+        .hidden { display: none; }
+    </style>
+</head>
+<body>
+    <h1>DOM Exercise 1 — Reading Paragraphs</h1>
+
+    <p class="content">This is the first paragraph about JavaScript.</p>
+    <p class="content">The DOM allows us to interact with HTML elements dynamically.</p>
+    <p class="content">We can read, modify, create, and delete elements using JavaScript.</p>
+    <p>This paragraph has no class "content" — it will NOT be included.</p>
+
+    <button onclick="showParagraphs()">Show paragraph contents in table</button>
+
+    <div id="output" class="hidden"></div>
+
+    <script>
+        function showParagraphs() {
+            var paragraphs = document.getElementsByTagName("p");
+            var html = "<table><tr><th>#</th><th>Length</th><th>Content</th></tr>";
+            for (var i = 0; i < paragraphs.length; i++) {
+                html += "<tr><td>" + i + "</td><td>" + paragraphs[i].innerHTML.length + "</td><td>" + paragraphs[i].innerHTML + "</td></tr>";
+            }
+            html += "</table>";
+            var output = document.getElementById("output");
+            output.innerHTML = html;
+            output.classList.remove("hidden");
+        }
+    </script>
+</body>
+</html>
