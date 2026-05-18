@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>DOM Ex4 - Remove Elements</title>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 24px; max-width: 480px; }
+        ul { padding: 0; margin: 16px 0; }
+        li {
+            display: flex; align-items: center; justify-content: space-between;
+            padding: 10px 14px; margin: 6px 0;
+            background: #f0f4ff; border-radius: 6px;
+            border: 1px solid #c0d0f0; list-style: none;
+            animation: fadeIn 0.3s ease;
+        }
+        @keyframes fadeIn { from { opacity:0; transform: translateX(-10px); } to { opacity:1; transform: translateX(0); } }
+        .remove-btn {
+            background: #e24a4a; color: white; border: none;
+            border-radius: 4px; padding: 4px 12px; cursor: pointer; font-size: 13px;
+        }
+        .remove-btn:hover { background: #c0392b; }
+        #addBtn {
+            padding: 8px 18px; background: #4a90e2; color: white;
+            border: none; border-radius: 4px; cursor: pointer; font-size: 14px;
+        }
+        #newItem { padding: 8px; border: 1px solid #ccc; border-radius: 4px; font-size: 14px; width: 200px; }
+        .empty { color: #aaa; font-style: italic; padding: 12px; }
+    </style>
+</head>
+<body>
+    <h1>DOM Exercise 4 — Remove List Elements</h1>
+
+    <div style="margin-bottom: 12px;">
+        <input type="text" id="newItem" placeholder="New item name">
+        <button id="addBtn" onclick="addItem()">➕ Add</button>
+    </div>
+
+    <ul id="myList">
+        <li> Apple <button class="remove-btn" onclick="removeItem(this)">Remove</button></li>
+        <li> Banana <button class="remove-btn" onclick="removeItem(this)">Remove</button></li>
+        <li> Grapes <button class="remove-btn" onclick="removeItem(this)">Remove</button></li>
+        <li> Strawberry <button class="remove-btn" onclick="removeItem(this)">Remove</button></li>
+        <li> Kiwi <button class="remove-btn" onclick="removeItem(this)">Remove</button></li>
+    </ul>
+
+    <script>
+        function removeItem(btn) {
+            var li = btn.parentNode;
+            var ul = li.parentNode;
+            ul.removeChild(li);
+            checkEmpty();
+        }
+
+        function addItem() {
+            var val = document.getElementById("newItem").value.trim();
+            if (!val) return;
+            var ul = document.getElementById("myList");
+            // Remove empty message if present
+            var empty = ul.querySelector('.empty');
+            if (empty) ul.removeChild(empty);
+
+            var li = document.createElement("li");
+            li.innerHTML = val + ' <button class="remove-btn" onclick="removeItem(this)">Remove</button>';
+            ul.appendChild(li);
+            document.getElementById("newItem").value = '';
+        }
+
+        function checkEmpty() {
+            var ul = document.getElementById("myList");
+            if (ul.children.length === 0) {
+                ul.innerHTML = '<li class="empty">The list is empty. Add some items!</li>';
+            }
+        }
+    </script>
+</body>
+</html>
