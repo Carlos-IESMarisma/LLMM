@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>DOM Ex10 - Lights Out Game</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            min-height: 100vh;
+            background: #111;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Courier New', monospace;
+            color: white;
+        }
+        h1 { font-size: 2rem; margin-bottom: 6px; color: #f0e040; letter-spacing: 0.1em; }
+        p.subtitle { color: #aaa; margin-bottom: 20px; font-size: 0.9rem; }
+        .info { display: flex; gap: 30px; margin-bottom: 16px; font-size: 0.95rem; color: #bbb; }
+        .info span { color: #f0e040; font-weight: bold; }
+        #grid {
+            display: grid;
+            grid-template-columns: repeat(5, 70px);
+            grid-template-rows: repeat(5, 70px);
+            gap: 6px;
+        }
+        .cell {
+            width: 70px; height: 70px;
+            border-radius: 8px;
+            cursor: pointer;
+            border: 2px solid #444;
+            transition: background 0.15s, box-shadow 0.15s;
+        }
+        .cell.on {
+            background: #f0e040;
+            box-shadow: 0 0 18px #f0e040, 0 0 40px rgba(240,224,64,0.4);
+            border-color: #ffe000;
+        }
+        .cell.off {
+            background: #222;
+            box-shadow: none;
+            border-color: #333;
+        }
+        .buttons { display: flex; gap: 12px; margin-top: 20px; }
+        button {
+            padding: 10px 24px; font-size: 0.95rem;
+            border: none; border-radius: 6px; cursor: pointer;
+            font-family: 'Courier New', monospace;
+        }
+        #newBtn { background: #f0e040; color: #111; font-weight: bold; }
+        #newBtn:hover { background: #ffe000; }
+        #winMsg {
+            display: none; margin-top: 20px;
+            font-size: 1.4rem; color: #f0e040;
+            animation: blink 0.8s infinite;
+        }
+        @keyframes blink { 0%,100%{opacity:1;} 50%{opacity:0.3;} }
+    </style>
+</head>
+<body>
+    <h1> LIGHTS OUT</h1>
+    <p class="subtitle">Click a cell to toggle it and its neighbours. Turn all lights OFF!</p>
+    <div class="info">
+        Moves: <span id="moveCount">0</span>
+    </div>
+    <div id="grid"></div>
+    <div class="buttons">
+        <button id="newBtn" onclick="newGame()">New Game</button>
+    </div>
+    <div id="winMsg"> YOU WIN! All lights are off!</div>
+
+    <script>
+        const SIZE = 5;
+        let board = [];
+        let moves = 0;
+
+        function newGame() {
+            moves = 0;
+            document.getElementById('moveCount').textContent = 0;
+            document.getElementById('winMsg').style.display = 'none';
+
+            // Generate a solvable puzzle by making random valid moves on a solved board
+            board = Array.from({length: SIZE}, () => Array(SIZE).fill(false));
+            for (var k = 0; k < 15; k++) {
+                var r = Math.floor(Math.random() * SIZE);
+                var c = Math.floor(Math.random() * SIZE);
+                toggle(r, c, false);
+            }
+            renderBoard();
+        }
+
+        function toggle(row, col, count) {
+            var neighbors = [[row,col],[row-1,col],[row+1,col],[row,col-1],[row,col+1]];
+            neighbors.forEach(function([r,c]) {
+                if (r >= 0 && r < SIZE && c >= 0 && c < SIZE) {
+                    board[r][c] = !board[r][c];
+                }
+            });
+            if (count !== false) {
+                moves++;
+                document.getElementById('moveCount').textContent = moves;
+            }
+        }
+
+        function renderBoard() {
+            var grid = document.getElementById('grid');
+            grid.innerHTML = '';
+            for (var r = 0; r < SIZE; r++) {
+                for (var c = 0; c < SIZE; c++) {
+                    var cell = document.createElement('div');
+                    cell.className = 'cell ' + (board[r][c] ? 'on' : 'off');
+                    cell.dataset.r = r;
+                    cell.dataset.c = c;
+                    cell.onclick = handleClick;
+                    grid.appendChild(cell);
+                }
+            }
+        }
+
+        function handleClick() {
+            var r = parseInt(this.dataset.r);
+            var c = parseInt(this.dataset.c);
+            toggle(r, c, true);
+            renderBoard();
+            checkWin();
+        }
+
+        function checkWin() {
+            var allOff = board.every(function(row) { return row.every(function(cell) { return !cell; }); });
+            if (allOff) {
+                document.getElementById('winMsg').style.display = 'block';
+            }
+        }
+
+        newGame();
+    </script>
+</body>
+</html>
