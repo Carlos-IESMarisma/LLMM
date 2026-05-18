@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Exercise 10 - Functions</title>
+    <style>
+        * { box-sizing: border-box; }
+        body { font-family: Arial, sans-serif; padding: 24px; max-width: 760px; background: #f5f5f5; }
+        h1 { color: #222; margin-bottom: 20px; }
+        .card {
+            background: white; border-radius: 8px; padding: 20px;
+            margin-bottom: 18px; box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+        }
+        h3 { color: #4a90e2; margin-bottom: 12px; font-size: 1rem; }
+        input[type="text"], input[type="number"] {
+            padding: 8px 10px; font-size: 14px; border: 1px solid #ccc;
+            border-radius: 4px; width: 160px; margin-right: 6px;
+        }
+        button {
+            padding: 8px 18px; background: #4a90e2; color: white;
+            border: none; border-radius: 4px; cursor: pointer; font-size: 14px;
+        }
+        button:hover { background: #357abd; }
+        .result {
+            margin-top: 10px; padding: 8px 12px;
+            background: #eef4ff; border-left: 3px solid #4a90e2;
+            border-radius: 4px; font-family: monospace; font-size: 0.95rem;
+            min-height: 28px; color: #222;
+        }
+    </style>
+</head>
+<body>
+    <h1>Exercise 10 — JavaScript Functions</h1>
+
+    <div class="card">
+        <h3>1. max(a, b) — Returns the largest of two numbers</h3>
+        <input type="number" id="max1" placeholder="Number 1">
+        <input type="number" id="max2" placeholder="Number 2">
+        <button onclick="runMax()">Run</button>
+        <div class="result" id="maxResult"></div>
+    </div>
+
+    <div class="card">
+        <h3>2. maxOfThree(a, b, c) — Returns the largest of three numbers</h3>
+        <input type="number" id="m3a" placeholder="Number 1">
+        <input type="number" id="m3b" placeholder="Number 2">
+        <input type="number" id="m3c" placeholder="Number 3">
+        <button onclick="runMax3()">Run</button>
+        <div class="result" id="max3Result"></div>
+    </div>
+
+    <div class="card">
+        <h3>3. isVowel(char) — Returns true if character is a vowel</h3>
+        <input type="text" id="vowelInput" placeholder="Enter a character" maxlength="1" style="width:120px">
+        <button onclick="runVowel()">Run</button>
+        <div class="result" id="vowelResult"></div>
+    </div>
+
+    <div class="card">
+        <h3>4. translate(text) — Rövarspråket encoder</h3>
+        <input type="text" id="rovarInput" placeholder="e.g. this is fun" style="width:260px">
+        <button onclick="runRovar()">Run</button>
+        <div class="result" id="rovarResult"></div>
+    </div>
+
+    <div class="card">
+        <h3>5. sum([]) and multiply([]) — Operations on arrays</h3>
+        <input type="text" id="arrInput" placeholder="e.g. 1,2,3,4" style="width:200px">
+        <button onclick="runSumMul()">Run</button>
+        <div class="result" id="sumResult"></div>
+    </div>
+
+    <div class="card">
+        <h3>6. reverse(str) — Reverses a string</h3>
+        <input type="text" id="revInput" placeholder="e.g. jag testar" style="width:220px">
+        <button onclick="runReverse()">Run</button>
+        <div class="result" id="revResult"></div>
+    </div>
+
+    <div class="card">
+        <h3>7. sortWords([]) — Sort words alphabetically</h3>
+        <input type="text" id="sortInput" placeholder="e.g. banana,apple,cherry" style="width:280px">
+        <button onclick="runSort()">Run</button>
+        <div class="result" id="sortResult"></div>
+    </div>
+
+    <div class="card">
+        <h3>8. findLongestWord([]) — Length of the longest word</h3>
+        <input type="text" id="longInput" placeholder="e.g. cat,elephant,dog" style="width:280px">
+        <button onclick="runLongest()">Run</button>
+        <div class="result" id="longResult"></div>
+    </div>
+
+    <div class="card">
+        <h3>9. filterLongWords([], i) — Words longer than i characters</h3>
+        <input type="text" id="filterInput" placeholder="Words (comma-separated)" style="width:240px">
+        <input type="number" id="filterN" placeholder="Min length" style="width:90px">
+        <button onclick="runFilter()">Run</button>
+        <div class="result" id="filterResult"></div>
+    </div>
+
+    <div class="card">
+        <h3>10. charFreq(str) — Character frequency in a string</h3>
+        <input type="text" id="freqInput" placeholder="e.g. abbabcbdbab" style="width:280px">
+        <button onclick="runFreq()">Run</button>
+        <div class="result" id="freqResult"></div>
+    </div>
+
+    <script>
+        function max(a, b) { return a > b ? a : b; }
+        function runMax() {
+            var a = parseFloat(document.getElementById('max1').value);
+            var b = parseFloat(document.getElementById('max2').value);
+            document.getElementById('maxResult').textContent = 'max(' + a + ', ' + b + ') = ' + max(a, b);
+        }
+
+        function maxOfThree(a, b, c) { return max(max(a, b), c); }
+        function runMax3() {
+            var a = parseFloat(document.getElementById('m3a').value);
+            var b = parseFloat(document.getElementById('m3b').value);
+            var c = parseFloat(document.getElementById('m3c').value);
+            document.getElementById('max3Result').textContent = 'maxOfThree(' + [a,b,c] + ') = ' + maxOfThree(a, b, c);
+        }
+
+        function isVowel(ch) { return 'aeiouAEIOU'.includes(ch); }
+        function runVowel() {
+            var ch = document.getElementById('vowelInput').value;
+            if (!ch) { document.getElementById('vowelResult').textContent = 'Enter a character!'; return; }
+            document.getElementById('vowelResult').textContent = '"' + ch + '" is a vowel: ' + isVowel(ch);
+        }
+
+        function translate(text) {
+            var consonants = 'bcdfghjklmnpqrstvwxyzBCDFGHJKLMNPQRSTVWXYZ';
+            var result = '';
+            for (var i = 0; i < text.length; i++) {
+                if (consonants.includes(text[i])) {
+                    result += text[i] + 'o' + text[i].toLowerCase();
+                } else {
+                    result += text[i];
+                }
+            }
+            return result;
+        }
+        function runRovar() {
+            var t = document.getElementById('rovarInput').value;
+            document.getElementById('rovarResult').textContent = 'translate("' + t + '") = "' + translate(t) + '"';
+        }
+
+        function sum(arr) { return arr.reduce(function(a,b){ return a+b; }, 0); }
+        function multiply(arr) { return arr.reduce(function(a,b){ return a*b; }, 1); }
+        function runSumMul() {
+            var arr = document.getElementById('arrInput').value.split(',').map(Number);
+            document.getElementById('sumResult').textContent =
+                'sum = ' + sum(arr) + ' | multiply = ' + multiply(arr);
+        }
+
+        function reverse(str) { return str.split('').reverse().join(''); }
+        function runReverse() {
+            var s = document.getElementById('revInput').value;
+            document.getElementById('revResult').textContent = 'reverse("' + s + '") = "' + reverse(s) + '"';
+        }
+
+        function sortWords(arr) { return arr.slice().sort(); }
+        function runSort() {
+            var arr = document.getElementById('sortInput').value.split(',').map(s => s.trim());
+            document.getElementById('sortResult').textContent = 'sorted: [' + sortWords(arr).join(', ') + ']';
+        }
+
+        function findLongestWord(arr) {
+            return arr.reduce(function(max, w) { return w.length > max ? w.length : max; }, 0);
+        }
+        function runLongest() {
+            var arr = document.getElementById('longInput').value.split(',').map(s => s.trim());
+            document.getElementById('longResult').textContent = 'Longest word length: ' + findLongestWord(arr);
+        }
+
+        function filterLongWords(arr, i) { return arr.filter(function(w){ return w.length > i; }); }
+        function runFilter() {
+            var arr = document.getElementById('filterInput').value.split(',').map(s => s.trim());
+            var n = parseInt(document.getElementById('filterN').value);
+            document.getElementById('filterResult').textContent =
+                'Words longer than ' + n + ': [' + filterLongWords(arr, n).join(', ') + ']';
+        }
+        function charFreq(str) {
+            var freq = {};
+            for (var i = 0; i < str.length; i++) {
+                freq[str[i]] = (freq[str[i]] || 0) + 1;
+            }
+            return freq;
+        }
+        function runFreq() {
+            var s = document.getElementById('freqInput').value;
+            var freq = charFreq(s);
+            var output = Object.entries(freq).map(function([k,v]){ return '"' + k + '":' + v; }).join(', ');
+            document.getElementById('freqResult').textContent = '{ ' + output + ' }';
+        }
+    </script>
+</body>
+</html>
