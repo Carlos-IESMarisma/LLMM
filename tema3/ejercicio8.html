@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Exercise 8 - Calculator</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #1c1c1e;
+            font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif;
+        }
+        .calc {
+            background: #1c1c1e;
+            border-radius: 20px;
+            padding: 20px;
+            width: 320px;
+            box-shadow: 0 30px 80px rgba(0,0,0,0.8);
+            border: 1px solid #333;
+        }
+        .display {
+            text-align: right;
+            padding: 16px 8px 8px;
+            margin-bottom: 12px;
+        }
+        #expression {
+            color: #888;
+            font-size: 0.9rem;
+            min-height: 20px;
+            margin-bottom: 4px;
+        }
+        #result {
+            color: white;
+            font-size: 3rem;
+            font-weight: 200;
+            letter-spacing: -1px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        .buttons {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+        }
+        button {
+            padding: 0;
+            height: 64px;
+            border: none;
+            border-radius: 50%;
+            font-size: 1.3rem;
+            cursor: pointer;
+            transition: filter 0.1s;
+        }
+        button:active { filter: brightness(1.3); }
+        .btn-gray { background: #a5a5a5; color: #000; }
+        .btn-orange { background: #ff9500; color: white; }
+        .btn-dark { background: #333; color: white; }
+        .btn-zero { border-radius: 32px; grid-column: span 2; text-align: left; padding-left: 26px; }
+    </style>
+</head>
+<body>
+    <div class="calc">
+        <div class="display">
+            <div id="expression"></div>
+            <div id="result">0</div>
+        </div>
+        <div class="buttons">
+            <button class="btn-gray" onclick="clearAll()">AC</button>
+            <button class="btn-gray" onclick="toggleSign()">+/-</button>
+            <button class="btn-gray" onclick="percent()">%</button>
+            <button class="btn-orange" onclick="setOp('/')">÷</button>
+
+            <button class="btn-dark" onclick="input('7')">7</button>
+            <button class="btn-dark" onclick="input('8')">8</button>
+            <button class="btn-dark" onclick="input('9')">9</button>
+            <button class="btn-orange" onclick="setOp('*')">×</button>
+
+            <button class="btn-dark" onclick="input('4')">4</button>
+            <button class="btn-dark" onclick="input('5')">5</button>
+            <button class="btn-dark" onclick="input('6')">6</button>
+            <button class="btn-orange" onclick="setOp('-')">−</button>
+
+            <button class="btn-dark" onclick="input('1')">1</button>
+            <button class="btn-dark" onclick="input('2')">2</button>
+            <button class="btn-dark" onclick="input('3')">3</button>
+            <button class="btn-orange" onclick="setOp('+')">+</button>
+
+            <button class="btn-dark btn-zero" onclick="input('0')">0</button>
+            <button class="btn-dark" onclick="inputDot()">.</button>
+            <button class="btn-orange" onclick="calculate()">=</button>
+        </div>
+    </div>
+
+    <script>
+        let current = '0';
+        let prev = null;
+        let op = null;
+        let justCalc = false;
+
+        function updateDisplay() {
+            document.getElementById('result').textContent = current;
+        }
+
+        function input(digit) {
+            if (justCalc) { current = '0'; justCalc = false; }
+            if (current === '0') current = digit;
+            else current += digit;
+            updateDisplay();
+        }
+
+        function inputDot() {
+            if (!current.includes('.')) current += '.';
+            updateDisplay();
+        }
+
+        function clearAll() {
+            current = '0'; prev = null; op = null; justCalc = false;
+            document.getElementById('expression').textContent = '';
+            updateDisplay();
+        }
+
+        function toggleSign() {
+            current = String(parseFloat(current) * -1);
+            updateDisplay();
+        }
+
+        function percent() {
+            current = String(parseFloat(current) / 100);
+            updateDisplay();
+        }
+
+        function setOp(o) {
+            if (op && !justCalc) calculate();
+            prev = parseFloat(current);
+            op = o;
+            const symbols = {'/':'÷','*':'×','-':'−','+':'+'};
+            document.getElementById('expression').textContent = prev + ' ' + symbols[o];
+            justCalc = true;
+        }
+
+        function calculate() {
+            if (!op || prev === null) return;
+            const a = prev, b = parseFloat(current);
+            let res;
+            if (op === '+') res = a + b;
+            else if (op === '-') res = a - b;
+            else if (op === '*') res = a * b;
+            else if (op === '/') res = b !== 0 ? a / b : 'Error';
+            document.getElementById('expression').textContent = '';
+            current = String(parseFloat(res.toFixed(10)));
+            prev = null; op = null; justCalc = true;
+            updateDisplay();
+        }
+    </script>
+</body>
+</html>
