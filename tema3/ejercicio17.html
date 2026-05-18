@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>DOM Ex7 - onClick</title>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 24px; max-width: 600px; }
+        button {
+            padding: 12px 28px; font-size: 1rem;
+            background: #4a90e2; color: white; border: none;
+            border-radius: 8px; cursor: pointer; box-shadow: 0 2px 8px rgba(74,144,226,0.3);
+        }
+        button:hover { background: #357abd; }
+        #imgContainer {
+            display: flex; flex-wrap: wrap; gap: 12px;
+            margin-top: 20px; padding: 16px;
+            min-height: 80px; border: 2px dashed #a0b4f0;
+            border-radius: 10px; background: #f0f4ff;
+            align-items: flex-start;
+        }
+        #imgContainer img {
+            width: 140px; height: 100px; object-fit: cover;
+            border-radius: 6px; box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+            animation: popIn 0.3s ease;
+        }
+        @keyframes popIn {
+            from { opacity:0; transform: scale(0.7); }
+            to { opacity:1; transform: scale(1); }
+        }
+        #counter { color: #4a90e2; font-weight: bold; margin-left: 12px; }
+    </style>
+</head>
+<body>
+    <h1>DOM Exercise 7 — onClick Event</h1>
+    <p>Click the button to add a new random image to the div.</p>
+
+    <button onclick="addImage()"> Add Image</button>
+    <span id="counter">0 images</span>
+
+    <div id="imgContainer">
+        <em style="color:#aaa; align-self:center;">No images yet. Click the button!</em>
+    </div>
+
+    <script>
+        var count = 0;
+        var seeds = ['forest','ocean','city','mountains','desert','lake','sky','flowers','street','bridge'];
+
+        function addImage() {
+            var container = document.getElementById("imgContainer");
+            var placeholder = container.querySelector("em");
+            if (placeholder) container.removeChild(placeholder);
+
+            var img = document.createElement("img");
+            var seed = seeds[count % seeds.length];
+            img.src = "https://picsum.photos/seed/" + seed + count + "/280/200";
+            img.alt = "Image " + (count + 1);
+            container.appendChild(img);
+
+            count++;
+            document.getElementById("counter").textContent = count + " image" + (count !== 1 ? "s" : "");
+        }
+    </script>
+</body>
+</html>
