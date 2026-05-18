@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>DOM Ex5 - Document Properties</title>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 24px; max-width: 700px; }
+        .card { background: #f9f9f9; border: 1px solid #ddd; border-radius: 8px; padding: 16px; margin: 16px 0; }
+        h2 { color: #4a90e2; margin-top: 0; }
+        table { border-collapse: collapse; width: 100%; font-size: 14px; }
+        td, th { border: 1px solid #ddd; padding: 8px; text-align: left; }
+        th { background: #4a90e2; color: white; }
+        tr:nth-child(even) { background: #eef4ff; }
+        a { color: #4a90e2; word-break: break-all; }
+    </style>
+</head>
+<body>
+    <h1>DOM Exercise 5 — Document Properties</h1>
+
+    <!-- Sample content for demonstration -->
+    <p>This page demonstrates reading document properties using JavaScript DOM.</p>
+    <img src="https://picsum.photos/seed/dom5a/100/60" alt="Sample Image 1">
+    <img src="https://picsum.photos/seed/dom5b/100/60" alt="Sample Image 2">
+    <a href="https://www.w3schools.com">W3Schools</a> |
+    <a href="https://developer.mozilla.org">MDN Web Docs</a> |
+    <a href="https://javascript.info">javascript.info</a>
+
+    <div id="output"></div>
+
+    <script>
+        function buildReport() {
+            var html = '';
+
+            // Title
+            html += '<div class="card"><h2> Document Title</h2><p>' + document.title + '</p></div>';
+
+            // URL & Domain
+            html += '<div class="card"><h2> URL & Domain</h2>';
+            html += '<p><strong>URL:</strong> ' + (document.URL || window.location.href) + '</p>';
+            html += '<p><strong>Domain:</strong> ' + (document.domain || window.location.hostname || '(local file)') + '</p></div>';
+
+            // Images
+            var imgs = document.images;
+            html += '<div class="card"><h2> Images (' + imgs.length + ')</h2><table><tr><th>#</th><th>src</th><th>alt</th></tr>';
+            for (var i = 0; i < imgs.length; i++) {
+                html += '<tr><td>' + i + '</td><td><a href="' + imgs[i].src + '" target="_blank">' + imgs[i].src + '</a></td><td>' + imgs[i].alt + '</td></tr>';
+            }
+            html += '</table></div>';
+
+            // Links
+            var links = document.links;
+            html += '<div class="card"><h2> Links (' + links.length + ')</h2><table><tr><th>#</th><th>href</th><th>text</th></tr>';
+            for (var j = 0; j < links.length; j++) {
+                html += '<tr><td>' + j + '</td><td><a href="' + links[j].href + '" target="_blank">' + links[j].href + '</a></td><td>' + links[j].innerText + '</td></tr>';
+            }
+            html += '</table></div>';
+
+            document.getElementById('output').innerHTML = html;
+        }
+
+        // Run on load
+        window.onload = buildReport;
+    </script>
+</body>
+</html>
