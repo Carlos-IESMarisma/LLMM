@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>DOM Ex6 - onLoad</title>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 30px; text-align: center; }
+        #greetingBanner {
+            background: linear-gradient(135deg, #4a90e2, #7b2ff7);
+            color: white;
+            padding: 24px 32px;
+            border-radius: 12px;
+            font-size: 1.5rem;
+            max-width: 500px;
+            margin: 30px auto;
+            box-shadow: 0 6px 24px rgba(74,144,226,0.4);
+            animation: slideIn 0.6s ease;
+            display: none;
+        }
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateY(-30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body onload="greet()">
+    <h1>DOM Exercise 6 — onLoad Event</h1>
+    <p>The greeting below appeared automatically when the page loaded.</p>
+
+    <div id="greetingBanner"></div>
+
+    <script>
+        function greet() {
+            var hour = new Date().getHours();
+            var greeting;
+            if (hour < 12) greeting = " Good morning! Welcome to the page!";
+            else if (hour < 18) greeting = " Good afternoon! Welcome to the page!";
+            else greeting = " Good evening! Welcome to the page!";
+
+            var banner = document.getElementById("greetingBanner");
+            banner.textContent = greeting;
+            banner.style.display = "block";
+        }
+    </script>
+</body>
+</html>
