@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>DOM Ex8 - setTimeout</title>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 30px; text-align: center; }
+        #countdown {
+            font-size: 5rem; font-weight: bold; color: #4a90e2;
+            margin: 30px auto; width: 120px; height: 120px;
+            border-radius: 50%; display: flex; align-items: center; justify-content: center;
+            border: 6px solid #4a90e2;
+            animation: pulse 1s infinite;
+        }
+        @keyframes pulse { 0%,100%{box-shadow:0 0 0 0 rgba(74,144,226,0.4);} 50%{box-shadow:0 0 0 15px rgba(74,144,226,0);} }
+        p { color: #555; font-size: 1.1rem; }
+    </style>
+</head>
+<body>
+    <h1>DOM Exercise 8 — setTimeout</h1>
+    <p>An alert will appear after <strong>5 seconds</strong>.</p>
+    <div id="countdown">5</div>
+
+    <script>
+        var secs = 5;
+        var interval = setInterval(function() {
+            secs--;
+            document.getElementById('countdown').textContent = secs;
+            if (secs <= 0) clearInterval(interval);
+        }, 1000);
+
+        setTimeout(function() {
+            alert(" 5 seconds have passed! This is the setTimeout message.");
+        }, 5000);
+    </script>
+</body>
+</html>
