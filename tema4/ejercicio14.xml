@@ -1,0 +1,12 @@
+const persona = {
+  nombre: "Carlos López",
+  edad: 40,
+  coches: ["Ford", "BMW", "Fiat"]
+};
+
+let txt = "Nombre: " + persona.nombre + "<br>";
+txt += "Edad: " + persona.edad + "<br>Coches:<ul>";
+for(let coche of persona.coches)
+  txt += "<li>" + coche + "</li>";
+txt += "</ul>";
+document.getElementById("demo").innerHTML = txt;
