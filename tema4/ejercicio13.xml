@@ -1,0 +1,11 @@
+const persona = {
+  nombre: "Ana García",
+  edad: 25,
+  ciudad: "Huelva",
+  profesion: "Desarrolladora Web"
+};
+
+let txt = "";
+for(let clave in persona)
+  txt += "<b>" + clave + "</b>: " + persona[clave] + "<br>";
+document.getElementById("demo").innerHTML = txt;
