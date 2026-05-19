@@ -1,0 +1,14 @@
+1. ¿Cómo se escriben los comentarios en XML? (sección 2.5)
+Los comentarios en XML siguen la misma sintaxis que en HTML:
+<!-- Este es un comentario XML -->
+
+No pueden contener -- dentro del texto del comentario, y no pueden aparecer antes de la declaración XML.
+
+2. ¿Puede un atributo repetirse en el mismo elemento? (sección 3.1)
+❌ No. El estándar XML 1.0 (sección 3.1) establece explícitamente que no está permitido que un nombre de atributo aparezca 
+más de una vez en la misma etiqueta de apertura o etiqueta vacía. Un documento con atributos repetidos no está bien formado.
+
+3. ¿Dónde se especifica que las etiquetas de apertura y cierre deben coincidir?
+En la sección 3.1 — Element del estándar XML 1.0, en la regla de producción de "STag" y "ETag". Se establece que el nombre de 
+la etiqueta de cierre debe ser idéntico al de la etiqueta de apertura correspondiente. Un documento donde no coincidan no 
+está bien formado y los analizadores deben rechazarlo con un error fatal.
