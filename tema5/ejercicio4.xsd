@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+  <!-- Elemento raíz -->
+  <xs:element name="cfgs">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="modulo" type="tipoModulo" minOccurs="1" maxOccurs="unbounded"/>
+      </xs:sequence>
+      <xs:attribute name="titulo" type="xs:string" use="required"/>
+      <xs:attribute name="nivel"  type="xs:string" use="required"/>
+    </xs:complexType>
+
+    <!-- El id de cada módulo debe ser único en el documento -->
+    <xs:key name="claveModulo">
+      <xs:selector xpath="modulo"/>
+      <xs:field    xpath="@id"/>
+    </xs:key>
+  </xs:element>
+
+  <!-- Tipo complejo: módulo -->
+  <xs:complexType name="tipoModulo">
+    <xs:sequence>
+      <xs:element name="nombre"      type="xs:string"/>
+      <xs:element name="descripcion" type="xs:string"/>
+      <xs:element name="codigo"      type="tipoCodigo"/>
+      <xs:element name="profesor"    type="xs:string"/>
+      <xs:element name="fechas"      type="tipoFechas"/>
+    </xs:sequence>
+    <xs:attribute name="id" type="xs:ID" use="required"/>
+  </xs:complexType>
+
+  <!-- Código de módulo: exactamente 4 dígitos -->
+  <xs:simpleType name="tipoCodigo">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="[0-9]{4}"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <!-- Tipo complejo: fechas (inicio y fin) -->
+  <xs:complexType name="tipoFechas">
+    <xs:sequence>
+      <xs:element name="inicio" type="tipoFecha"/>
+      <xs:element name="fin"    type="tipoFecha"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <!-- Tipo complejo: una fecha con dia, mes y anio -->
+  <xs:complexType name="tipoFecha">
+    <xs:sequence>
+      <xs:element name="dia"  type="tipoDia"/>
+      <xs:element name="mes"  type="tipoMes"/>
+      <xs:element name="anio" type="tipoAnio"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <!-- Día: 1-31 -->
+  <xs:simpleType name="tipoDia">
+    <xs:restriction base="xs:integer">
+      <xs:minInclusive value="1"/>
+      <xs:maxInclusive value="31"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <!-- Mes: 1-12 -->
+  <xs:simpleType name="tipoMes">
+    <xs:restriction base="xs:integer">
+      <xs:minInclusive value="1"/>
+      <xs:maxInclusive value="12"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <!-- Año: formato de 4 dígitos -->
+  <xs:simpleType name="tipoAnio">
+    <xs:restriction base="xs:integer">
+      <xs:minInclusive value="1900"/>
+      <xs:maxInclusive value="2100"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+</xs:schema>
