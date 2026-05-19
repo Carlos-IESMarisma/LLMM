@@ -1,0 +1,38 @@
+<!DOCTYPE html><html lang="es"><body>
+<h2>CD por compañía</h2>
+<div id="companias"></div>
+<div id="detalle"></div>
+<script>
+var xmlData;
+const xhttp = new XMLHttpRequest();
+xhttp.onload = function() {
+  xmlData = this.responseXML;
+  const cds = xmlData.getElementsByTagName("CD");
+  const companies = {};
+  for(let i = 0; i < cds.length; i++) {
+    const company = cds[i].getElementsByTagName("COMPANY")[0].childNodes[0].nodeValue;
+    if(!companies[company]) companies[company] = [];
+    companies[company].push(cds[i]);
+  }
+  let html = "";
+  for(const comp in companies)
+    html += `<button onclick="mostrar('${comp}')">${comp}</button> `;
+  document.getElementById("companias").innerHTML = html;
+};
+function mostrar(company) {
+  const cds = xmlData.getElementsByTagName("CD");
+  let html = `<h3>${company}</h3><ul>`;
+  for(let i = 0; i < cds.length; i++) {
+    const comp  = cds[i].getElementsByTagName("COMPANY")[0].childNodes[0].nodeValue;
+    if(comp === company) {
+      const title  = cds[i].getElementsByTagName("TITLE")[0].childNodes[0].nodeValue;
+      const artist = cds[i].getElementsByTagName("ARTIST")[0].childNodes[0].nodeValue;
+      html += `<li><b>${title}</b> — ${artist}</li>`;
+    }
+  }
+  html += "</ul>";
+  document.getElementById("detalle").innerHTML = html;
+}
+xhttp.open("GET", "https://www.w3schools.com/js/cd_catalog.xml");
+xhttp.send();
+</script></body></html>
