@@ -1,0 +1,26 @@
+<!DOCTYPE html><html lang="es"><head><meta charset="UTF-8"></head><body>
+<h2> Previsión meteorológica — Huelva</h2>
+<div id="meteo">Cargando...</div>
+<script>
+const xhttp = new XMLHttpRequest();
+xhttp.onload = function() {
+  const xml = this.responseXML;
+  const dias = xml.getElementsByTagName("dia");
+  let html = "";
+  for(let i = 0; i < dias.length; i++) {
+    const fecha     = dias[i].getAttribute("fecha");
+    const tmax      = dias[i].getElementsByTagName("maxima")[0]?.textContent || "-";
+    const tmin      = dias[i].getElementsByTagName("minima")[0]?.textContent || "-";
+    const humedad   = dias[i].getElementsByTagName("HumedadRelativa")[0]?.textContent || "-";
+    const viento    = dias[i].getElementsByTagName("VelocidadViento")[0]?.textContent || "-";
+    const direccion = dias[i].getElementsByTagName("DireccionViento")[0]?.textContent || "-";
+    html += `<h3>${fecha}</h3>
+    <p> Máx: ${tmax}°C | Mín: ${tmin}°C</p>
+    <p> Humedad: ${humedad}% | 💨 Viento: ${viento} km/h (${direccion})</p>`;
+  }
+  document.getElementById("meteo").innerHTML = html;
+};
+xhttp.onerror = () => { document.getElementById("meteo").innerHTML = "Error CORS — ejecuta desde servidor local."; };
+xhttp.open("GET", "http://www.aemet.es/xml/municipios/localidad_21041.xml");
+xhttp.send();
+</script></body></html>
