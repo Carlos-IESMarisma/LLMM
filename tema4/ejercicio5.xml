@@ -1,0 +1,23 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<CDList>
+  <CD>
+    <titulo>Thriller</titulo>
+    <artista>Michael Jackson</artista>
+    <anio>1982</anio>
+    <categoria>Pop / R&B</categoria>
+    <canciones>
+      <cancion numero="1">
+        <nombre>Wanna Be Startin' Somethin'</nombre>
+        <duracion>6:02</duracion>
+      </cancion>
+      <cancion numero="2">
+        <nombre>Baby Be Mine</nombre>
+        <duracion>4:20</duracion>
+      </cancion>
+      <cancion numero="3">
+        <nombre>Thriller</nombre>
+        <duracion>5:57</duracion>
+      </cancion>
+    </canciones>
+  </CD>
+</CDList>
