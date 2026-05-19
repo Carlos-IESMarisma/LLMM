@@ -1,0 +1,47 @@
+<!-- DTD externa para el ejercicio 3: Pedidos de clientes -->
+
+<!ELEMENT pedidos (pedido+)>
+
+<!--
+  Cada pedido contiene:
+  - empresa O persona (uno u otro, no los dos)
+  - uno o más productos
+  - una fecha
+  - opcionalmente una factura
+-->
+<!ELEMENT pedido ((empresa | persona), producto+, fecha, factura?)>
+
+<!-- empresa: PCDATA con CIF como ID único, sector (NMTOKEN) y actividad (NMTOKENS) -->
+<!ELEMENT empresa (#PCDATA)>
+<!ATTLIST empresa
+  CIF       ID       #REQUIRED
+  sector    NMTOKEN  #REQUIRED
+  actividad NMTOKENS #REQUIRED>
+
+<!-- persona: PCDATA con NIF como ID único -->
+<!ELEMENT persona (#PCDATA)>
+<!ATTLIST persona
+  NIF ID #REQUIRED>
+
+<!-- producto: PCDATA con id como ID único -->
+<!ELEMENT producto (#PCDATA)>
+<!ATTLIST producto
+  id ID #REQUIRED>
+
+<!-- fecha es simple PCDATA -->
+<!ELEMENT fecha (#PCDATA)>
+
+<!--
+  factura contiene: emisor, total, fecha
+  - numfactura: ID único de la factura
+  - cliente: IDREF que apunta al CIF de empresa o NIF de persona del pedido
+  - productos: IDREFS que apunta a uno o varios id de producto
+-->
+<!ELEMENT factura (emisor, total, fecha)>
+<!ATTLIST factura
+  numfactura ID     #REQUIRED
+  cliente    IDREF  #REQUIRED
+  productos  IDREFS #REQUIRED>
+
+<!ELEMENT emisor (#PCDATA)>
+<!ELEMENT total  (#PCDATA)>
