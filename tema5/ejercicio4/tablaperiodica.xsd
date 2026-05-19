@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+  <!-- Elemento raíz: lista de átomos -->
+  <xs:element name="tabla_periodica">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="atomo" type="tipoAtomo" minOccurs="1" maxOccurs="unbounded"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+
+  <!-- Tipo complejo: átomo -->
+  <xs:complexType name="tipoAtomo">
+    <xs:sequence>
+      <xs:element name="nombre"         type="tipoNombre"/>
+      <xs:element name="simbolo"        type="tipoSimbolo"/>
+      <xs:element name="numero_atomico" type="tipoNumeroAtomico"/>
+      <xs:element name="peso_atomico"   type="xs:decimal"/>
+      <xs:element name="punto_ebullicion" type="tipoPuntoEbullicion"/>
+      <xs:element name="densidad"       type="tipoDensidad"/>
+    </xs:sequence>
+    <!-- Atributo estado: obligatorio, solo acepta sólido, líquido o gaseoso -->
+    <xs:attribute name="estado" use="required">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="solido"/>
+          <xs:enumeration value="liquido"/>
+          <xs:enumeration value="gaseoso"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:complexType>
+
+  <!-- Nombre: máximo 15 caracteres -->
+  <xs:simpleType name="tipoNombre">
+    <xs:restriction base="xs:string">
+      <xs:maxLength value="15"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <!-- Símbolo: 1-3 caracteres, primera letra mayúscula -->
+  <xs:simpleType name="tipoSimbolo">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="[A-Z][a-z]{0,2}"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <!-- Número atómico: entre 1 y 118 -->
+  <xs:simpleType name="tipoNumeroAtomico">
+    <xs:restriction base="xs:integer">
+      <xs:minInclusive value="1"/>
+      <xs:maxInclusive value="118"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <!-- Punto de ebullición: decimal con atributo unidades (por defecto: centigrados) -->
+  <xs:complexType name="tipoPuntoEbullicion">
+    <xs:simpleContent>
+      <xs:extension base="xs:decimal">
+        <xs:attribute name="unidades" use="optional" default="centigrados">
+          <xs:simpleType>
+            <xs:restriction base="xs:string">
+              <xs:enumeration value="centigrados"/>
+              <xs:enumeration value="kelvin"/>
+            </xs:restriction>
+          </xs:simpleType>
+        </xs:attribute>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+
+  <!-- Densidad: decimal con atributo unidades obligatorio -->
+  <xs:complexType name="tipoDensidad">
+    <xs:simpleContent>
+      <xs:extension base="xs:decimal">
+        <xs:attribute name="unidades" type="xs:string" use="required"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+
+</xs:schema>
