@@ -1,0 +1,28 @@
+1. document.getElementsByTagName("title")[0].childNodes[0].nodeValue; = Every Day Italian
+
+2. document.getElementsByTagName("year")[0].childNodes[0].nodeValue; = 2005
+
+3. document.getElementsByTagName("price")[1].childNodes[0].nodeValue; = 29,99
+
+4. document.getElementsByTagName("author")[0].childNodes[0].nodeValue; = Giada De Laurentiis
+
+5. document.getElementsByTagName("book")[2].getElementsByTagName("author")[0].childNodes[0].nodeValue; = James Mcgovern
+
+6. document.getElementsByTagName("book")[2].getElementsByTagName("author")[1].childNodes[0].nodeValue; = Per Bothner
+
+7. document.getElementsByTagName("book")[0].attributes[0].nodeName; = category
+
+8. document.getElementsByTagName("book")[0].attributes[0].nodeValue; = cooking
+
+9. document.getElementsByTagName("book")[2].getElementsByTagName("author").length; = 5
+
+10. var l = document.getElementsByTagName("book")[2].getElementsByTagName("author").length;
+var a = document.getElementsByTagName("book")[2].getElementsByTagName("author");
+for(var i = 0; i < l; i++)
+    console.log(a[i].childNodes[0].nodeValue); = James McGovern, Per Bothner, Kurt Cagle, James Linn, Vaidyanathan Nagarajan
+
+11. document.getElementsByTagName("book")[3].attributes.length; = 2
+
+12. var attrs = document.getElementsByTagName("book")[3].attributes;
+for(var i = 0; i < attrs.length; i++)
+    console.log(attrs[i].nodeName + " = " + attrs[i].nodeValue); = category = web, cover = paperback
