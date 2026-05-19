@@ -1,0 +1,53 @@
+ Ejercicio 3 — Corrección de errores (ex3-err.txt)
+El fichero phonebook.xml contiene varios errores de anidamiento. En XML las etiquetas deben abrirse y cerrarse en el orden correcto.
+
+Error 1 — Etiquetas cruzadas en <president>
+ MAL <president>Bill Gates
+ <extension>09-9990011</president></extension>
+ BIEN <president>
+  <pname>Bill Gates</pname>
+  <extension>09-9990011</extension>
+</president>
+Error 2 — Mismo problema en <secretary>
+ MAL <secretary>Katharine Finch <extension>09-9990012</secretary></extension>
+ BIEN <secretary>
+  <sname>Katharine Finch</sname>
+  <extension>09-9990012</extension>
+</secretary>
+Error 3 — <president> y <secretary> fuera del elemento <company>
+ MAL Los elementos president y secretary están al mismo nivel que company, sin pertenecer a ningún contenedor lógico.
+ BIEN Deben estar dentro de un elemento que agrupe la empresa y sus contactos, p.ej. <entry>
+
+   
+Fichero corregido completo
+<?xml version='1.0' encoding='UTF-8'?>
+<phonebook>
+  <entry>
+    <company>
+      <cname>Microsoft</cname>
+      <exchange>09-999000</exchange>
+    </company>
+    <president>
+      <pname>Bill Gates</pname>
+      <extension>09-9990011</extension>
+    </president>
+    <secretary>
+      <sname>Katharine Finch</sname>
+      <extension>09-9990012</extension>
+    </secretary>
+  </entry>
+  <entry>
+    <company>
+      <cname>Oracle</cname>
+      <exchange>09-888000</exchange>
+    </company>
+    <president>
+      <pname>Larry Ellison</pname>
+      <extension>09-8880011</extension>
+    </president>
+    <secretary>
+      <sname>Helen Calhoun</sname>
+      <extension>09-8880012</extension>
+    </secretary>
+  </entry>
+</phonebook>
