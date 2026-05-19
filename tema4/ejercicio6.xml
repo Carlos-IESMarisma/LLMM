@@ -1,0 +1,22 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<carta>
+  <remitente>
+    <nombre>Ana García López</nombre>
+    <direccion>Calle Mayor 12, 21001 Huelva</direccion>
+    <email>ana.garcia@correo.es</email>
+  </remitente>
+  <destinatario>
+    <nombre>Empresa Tecnológica S.L.</nombre>
+    <direccion>Avenida de la Innovación 5, 28001 Madrid</direccion>
+  </destinatario>
+  <fecha>2024-03-15</fecha>
+  <cuerpo>
+    <saludo>Estimados señores:</saludo>
+    <parrafo>Me dirijo a ustedes para solicitar información sobre las plazas de prácticas disponibles en su empresa para el próximo curso académico.</parrafo>
+    <parrafo>Soy estudiante de segundo año del ciclo de Desarrollo de Aplicaciones Web y estoy muy interesada en ampliar mi formación en un entorno profesional.</parrafo>
+  </cuerpo>
+  <firma>
+    <despedida>Atentamente,</despedida>
+    <nombre>Ana García López</nombre>
+  </firma>
+</carta>
