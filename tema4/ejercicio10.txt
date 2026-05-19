@@ -1,0 +1,39 @@
+1. xmlDoc.getElementsByTagName("title")[0].childNodes[0].nodeValue;
+
+2.var titles = xmlDoc.getElementsByTagName("title");
+var txt = "";
+for(var i = 0; i < titles.length; i++)
+  txt += titles[i].childNodes[0].nodeValue + "<br>";
+
+3.  xmlDoc.getElementsByTagName("book")[3].attributes.length;
+
+4. var attrs = xmlDoc.getElementsByTagName("book")[3].attributes;
+for(var i = 0; i < attrs.length; i++)
+  txt += attrs[i].nodeName + " = " + attrs[i].nodeValue + "<br>";
+
+5. var autores = xmlDoc.getElementsByTagName("book")[2].getElementsByTagName("author");
+for(var i = 0; i < autores.length; i++)
+  txt += autores[i].childNodes[0].nodeValue + "<br>";
+
+6. <!DOCTYPE html>
+<html lang="es"><body>
+<h2>Libros</h2>
+<div id="demo"></div>
+<script>
+const xhttp = new XMLHttpRequest();
+xhttp.onload = function() {
+  const books = this.responseXML.getElementsByTagName("book");
+  let html = "<table border='1'><tr><th>Título</th><th>Autor</th><th>Precio</th><th>Año</th></tr>";
+  for(let i = 0; i < books.length; i++) {
+    let titulo = books[i].getElementsByTagName("title")[0].childNodes[0].nodeValue;
+    let autor  = books[i].getElementsByTagName("author")[0].childNodes[0].nodeValue;
+    let precio = books[i].getElementsByTagName("price")[0].childNodes[0].nodeValue;
+    let anio   = books[i].getElementsByTagName("year")[0].childNodes[0].nodeValue;
+    html += "<tr><td>"+titulo+"</td><td>"+autor+"</td><td>"+precio+"€</td><td>"+anio+"</td></tr>";
+  }
+  html += "</table>";
+  document.getElementById("demo").innerHTML = html;
+};
+xhttp.open("GET", "https://www.w3schools.com/xml/books.xml");
+xhttp.send();
+</script></body></html>
