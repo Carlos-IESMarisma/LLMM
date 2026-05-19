@@ -1,0 +1,18 @@
+1. var titulos = "";
+var n = document.getElementsByTagName("TITLE").length;
+for(var i = 0; i < n; i++)
+  titulos += document.getElementsByTagName("TITLE")[i].childNodes[0].nodeValue + " <br> ";
+document.getElementById("demo").innerHTML = titulos;
+
+2. var precios = "";
+var n = document.getElementsByTagName("PRICE").length;
+for(var i = 0; i < n; i++)
+  precios += document.getElementsByTagName("PRICE")[i].childNodes[0].nodeValue + " <br> ";
+document.getElementById("demo").innerHTML = precios;
+
+3. var companias = "";
+var n = document.getElementsByTagName("COMPANY").length;
+for(var i = 0; i < n; i++)
+  companias += document.getElementsByTagName("COMPANY")[i].childNodes[0].nodeValue + " <br> ";
+document.getElementById("demo").innerHTML = companias;
+
