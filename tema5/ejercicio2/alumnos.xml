@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE alumnos SYSTEM "dtd-ej2-alumnos.dtd">
+
+<alumnos>
+
+  <alumno num_alumno="A001" sexo="mujer" ayudante="A002">
+    <nombre>María</nombre>
+    <apellidos>García López</apellidos>
+    <domicilio>Calle Mayor 12, Huelva</domicilio>
+    <telefono tipo="propio">959123456</telefono>
+    <telefono tipo="madre">959654321</telefono>
+    <equipo>Baloncesto</equipo>
+    <aficion>Lectura</aficion>
+    <aficion>Programación</aficion>
+    <origen><provincia>Huelva</provincia></origen>
+    <altura>165</altura>
+    <evaluacion>
+      <calificacion>8</calificacion>
+    </evaluacion>
+    <evaluacion>
+      <calificacion>9</calificacion>
+    </evaluacion>
+    <comentario>Alumna muy participativa y con gran capacidad de trabajo.</comentario>
+  </alumno>
+
+  <alumno num_alumno="A002" sexo="hombre">
+    <nombre>Carlos</nombre>
+    <apellidos>Martínez Ruiz</apellidos>
+    <domicilio>Avenida de Andalucía 5, Huelva</domicilio>
+    <telefono tipo="propio">959987654</telefono>
+    <telefono tipo="padre">959111222</telefono>
+    <aficion>Deportes</aficion>
+    <origen><provincia>Sevilla</provincia></origen>
+    <evaluacion>
+      <calificacion>7</calificacion>
+    </evaluacion>
+    <evaluacion>
+      <calificacion>8</calificacion>
+    </evaluacion>
+  </alumno>
+
+  <alumno num_alumno="A003">
+    <nombre>Yuki</nombre>
+    <apellidos>Tanaka Sato</apellidos>
+    <domicilio>Calle Colón 8, Huelva</domicilio>
+    <telefono tipo="tutor">959333444</telefono>
+    <origen><pais>Japón</pais></origen>
+    <evaluacion>
+      <calificacion>10</calificacion>
+    </evaluacion>
+    <evaluacion>
+      <calificacion>10</calificacion>
+    </evaluacion>
+    <comentario>Alumno de intercambio con excelente rendimiento académico.</comentario>
+  </alumno>
+
+</alumnos>
