@@ -1,0 +1,24 @@
+const xhttp = new XMLHttpRequest();
+xhttp.onload = function() {
+  const obj = JSON.parse(this.responseText);
+  // Edad
+  console.log("Edad: " + obj.age);
+  // Tipo del primer pet
+  console.log("Tipo mascota 1: " + obj.pets[0].animal);
+  // Nombre del primer pet
+  console.log("Nombre mascota 1: " + obj.pets[0].name);
+  // Número de mascotas
+  console.log("Nº mascotas: " + obj.pets.length);
+  // Nombres de todas las mascotas
+  for(let i = 0; i < obj.pets.length; i++)
+    console.log(obj.pets[i].name);
+  // Tabla con todos los datos
+  let html = `<b>Nombre:</b> ${obj.name} <b>Edad:</b> ${obj.age}<br>
+  <table><tr><th>Mascota</th><th>Animal</th></tr>`;
+  for(let i = 0; i < obj.pets.length; i++)
+    html += `<tr><td>${obj.pets[i].name}</td><td>${obj.pets[i].animal}</td></tr>`;
+  html += "</table>";
+  document.getElementById("demo").innerHTML = html;
+};
+xhttp.open("GET", "https://www.w3schools.com/js/json_demo.txt");
+xhttp.send();
