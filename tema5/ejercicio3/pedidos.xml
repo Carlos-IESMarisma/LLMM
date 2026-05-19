@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pedidos SYSTEM "dtd-ej3-pedidos.dtd" [
+  <!-- Entidad interna general -->
+  <!ENTITY MiEmpresa "Esta es mi Empresa">
+]>
+
+<pedidos>
+
+  <!-- Pedido 1: realizado por una empresa -->
+  <pedido>
+    <empresa CIF="B21001234" sector="Informatica" actividad="Desarrollo Sistemas">
+      Tecnologías Andaluzas S.L.
+    </empresa>
+    <producto id="P001">Servidor Dell PowerEdge R740</producto>
+    <producto id="P002">Switch Cisco Catalyst 24 puertos</producto>
+    <fecha>2024-03-15</fecha>
+    <factura numfactura="F2024-001" cliente="B21001234" productos="P001 P002">
+      <emisor>&MiEmpresa;</emisor>
+      <total>4850.00</total>
+      <fecha>2024-03-16</fecha>
+    </factura>
+  </pedido>
+
+  <!-- Pedido 2: realizado por un cliente particular -->
+  <pedido>
+    <persona NIF="12345678A">Juan Pérez García</persona>
+    <producto id="P003">Portátil Lenovo ThinkPad X1 Carbon</producto>
+    <fecha>2024-03-20</fecha>
+  </pedido>
+
+  <!-- Pedido 3: empresa sin factura todavía -->
+  <pedido>
+    <empresa CIF="A41009876" sector="Educacion" actividad="Formacion Profesional">
+      IES Tecnológico Huelva
+    </empresa>
+    <producto id="P004">Licencias Microsoft Office 365</producto>
+    <producto id="P005">Impresora HP LaserJet Pro</producto>
+    <fecha>2024-03-22</fecha>
+  </pedido>
+
+</pedidos>
