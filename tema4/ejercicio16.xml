@@ -1,0 +1,12 @@
+const xhttp = new XMLHttpRequest();
+xhttp.onload = function() {
+  const arr = JSON.parse(this.responseText);
+  document.getElementById("longitud").innerHTML = "Longitud: " + arr.length;
+  let html = "<table><tr><th>Nombre</th><th>Ciudad</th></tr>";
+  for(let x of arr)
+    html += `<tr><td>${x.name}</td><td>${x.city}</td></tr>`;
+  html += "</table>";
+  document.getElementById("demo").innerHTML = html;
+};
+xhttp.open("GET", "https://www.w3schools.com/js/json_demo_array.txt");
+xhttp.send();
