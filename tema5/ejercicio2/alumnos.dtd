@@ -1,0 +1,45 @@
+<!-- DTD externa para el ejercicio 2: Alumnos -->
+
+<!ELEMENT alumnos (alumno+)>
+
+<!-- Elemento alumno con todos sus hijos posibles -->
+<!ELEMENT alumno (nombre, apellidos, domicilio, telefono+, equipo?,
+                  aficion*, origen, altura?, evaluacion+, comentario?)>
+
+<!-- num_alumno es ID único, debe empezar por letra (lo garantiza ID en XML)   -->
+<!-- ayudante es IDREF que apunta al num_alumno de otro alumno                 -->
+<!-- sexo es opcional y solo acepta hombre o mujer                             -->
+<!ATTLIST alumno
+  num_alumno ID      #REQUIRED
+  sexo       (hombre|mujer) #IMPLIED
+  ayudante   IDREF   #IMPLIED>
+
+<!ELEMENT nombre      (#PCDATA)>
+<!ELEMENT apellidos   (#PCDATA)>
+<!ELEMENT domicilio   (#PCDATA)>
+
+<!-- El atributo tipo indica a quién pertenece el teléfono -->
+<!ELEMENT telefono    (#PCDATA)>
+<!ATTLIST telefono
+  tipo (propio|padre|madre|tutor) #REQUIRED>
+
+<!-- Equipo deportivo: opcional, una sola pertenencia -->
+<!ELEMENT equipo      (#PCDATA)>
+
+<!-- Aficiones: 0 o más -->
+<!ELEMENT aficion     (#PCDATA)>
+
+<!-- Origen: provincia (español) O país (extranjero), nunca los dos -->
+<!ELEMENT origen      (provincia | pais)>
+<!ELEMENT provincia   (#PCDATA)>
+<!ELEMENT pais        (#PCDATA)>
+
+<!-- Altura en cm: opcional -->
+<!ELEMENT altura      (#PCDATA)>
+
+<!-- Evaluaciones: deben aparecer en orden evaluacion → calificacion y pueden repetirse -->
+<!ELEMENT evaluacion  (calificacion)>
+<!ELEMENT calificacion (#PCDATA)>
+
+<!-- Comentarios: ANY permite texto libre mezclado con elementos definidos -->
+<!ELEMENT comentario  ANY>
