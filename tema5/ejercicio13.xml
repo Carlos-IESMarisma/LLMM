@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
+
+<xsl:template match="/">
+  <html>
+  <head>
+    <style>
+      table { border-collapse: collapse; width: 100%; }
+      th { background: #225522; color: white; padding: 8px 12px; }
+      td { border: 1px solid #ccc; padding: 7px 12px; text-align:center; }
+      td:first-child { text-align: left; }
+      tr:nth-child(even) { background: #f0fff0; }
+    </style>
+  </head>
+  <body>
+    <h1>Asignaturas</h1>
+    <table>
+      <tr>
+        <th>Nombre</th>
+        <th>Créditos teóricos</th>
+        <th>Créditos prácticos</th>
+      </tr>
+      <xsl:for-each select="universidad/asignaturas/asignatura">
+        <tr>
+          <td><xsl:value-of select="nombre"/></td>
+          <td><xsl:value-of select="creditos_teoricos"/></td>
+          <td><xsl:value-of select="creditos_practicos"/></td>
+        </tr>
+      </xsl:for-each>
+    </table>
+  </body></html>
+</xsl:template>
+
+</xsl:stylesheet>
