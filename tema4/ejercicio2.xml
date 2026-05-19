@@ -1,0 +1,18 @@
+Análisis del fichero XML de noticias. El árbol tiene un elemento raíz <publication> con un único hijo <newsitem>, que a su vez contiene <source>, <class> y <article>.
+
+<?xml version='1.0' encoding='UTF-8' standalone='yes'?>
+<publication>
+  <newsitem>
+    <source>
+      <agency>STT</agency>
+      <editor>Miller</editor>
+    </source>
+    <class>local</class>
+    <article>
+      <heading>Snowstorms in Lappland</heading>
+      <text>snow.html</text>
+      <summary>snowx.html</summary>
+    </article>
+  </newsitem>
+</publication>
+El árbol tiene 3 niveles de profundidad: publication → newsitem → {source, class, article} → {agency, editor} / {heading, text, summary}
