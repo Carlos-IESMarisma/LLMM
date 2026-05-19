@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE cfgs [
+  <!ELEMENT cfgs (modulo+)>
+  <!ATTLIST cfgs
+    titulo CDATA #REQUIRED
+    nivel  CDATA #REQUIRED>
+
+  <!ELEMENT modulo (nombre, descripcion, codigo, profesor, fechas)>
+  <!ATTLIST modulo
+    id ID #REQUIRED>
+
+  <!ELEMENT nombre      (#PCDATA)>
+  <!ELEMENT descripcion (#PCDATA)>
+  <!ELEMENT codigo      (#PCDATA)>
+  <!ELEMENT profesor    (#PCDATA)>
+
+  <!ELEMENT fechas (inicio, fin)>
+  <!ELEMENT inicio (dia, mes, anio)>
+  <!ELEMENT fin    (dia, mes, anio)>
+  <!ELEMENT dia  (#PCDATA)>
+  <!ELEMENT mes  (#PCDATA)>
+  <!ELEMENT anio (#PCDATA)>
+]>
+
+<cfgs titulo="Desarrollo de Aplicaciones Web" nivel="Superior">
+
+  <modulo id="m0373">
+    <nombre>Lenguajes de Marcas y Sistemas de Gestión de Información</nombre>
+    <descripcion>Estudio de lenguajes de marcas como HTML, XML, XPath, XSLT y sistemas de gestión de información.</descripcion>
+    <codigo>0373</codigo>
+    <profesor>José Martínez García</profesor>
+    <fechas>
+      <inicio><dia>15</dia><mes>09</mes><anio>2024</anio></inicio>
+      <fin>   <dia>30</dia><mes>01</mes><anio>2025</anio></fin>
+    </fechas>
+  </modulo>
+
+  <modulo id="m0612">
+    <nombre>Desarrollo Web en Entorno Cliente</nombre>
+    <descripcion>Programación en JavaScript, manipulación del DOM, eventos y frameworks modernos de frontend.</descripcion>
+    <codigo>0612</codigo>
+    <profesor>Ana López Ruiz</profesor>
+    <fechas>
+      <inicio><dia>15</dia><mes>09</mes><anio>2024</anio></inicio>
+      <fin>   <dia>30</dia><mes>01</mes><anio>2025</anio></fin>
+    </fechas>
+  </modulo>
+
+  <modulo id="m0613">
+    <nombre>Desarrollo Web en Entorno Servidor</nombre>
+    <descripcion>Programación del lado del servidor con PHP, bases de datos MySQL y APIs REST.</descripcion>
+    <codigo>0613</codigo>
+    <profesor>Carlos Romero Díaz</profesor>
+    <fechas>
+      <inicio><dia>01</dia><mes>02</mes><anio>2025</anio></inicio>
+      <fin>   <dia>20</dia><mes>06</mes><anio>2025</anio></fin>
+    </fechas>
+  </modulo>
+
+  <modulo id="m0614">
+    <nombre>Despliegue de Aplicaciones Web</nombre>
+    <descripcion>Administración de servidores web, despliegue en la nube, Docker y CI/CD.</descripcion>
+    <codigo>0614</codigo>
+    <profesor>María Fernández Castillo</profesor>
+    <fechas>
+      <inicio><dia>01</dia><mes>02</mes><anio>2025</anio></inicio>
+      <fin>   <dia>20</dia><mes>06</mes><anio>2025</anio></fin>
+    </fechas>
+  </modulo>
+
+  <modulo id="m0615">
+    <nombre>Diseño de Interfaces Web</nombre>
+    <descripcion>CSS avanzado, accesibilidad, usabilidad y diseño responsive para aplicaciones web.</descripcion>
+    <codigo>0615</codigo>
+    <profesor>Laura Sánchez Moreno</profesor>
+    <fechas>
+      <inicio><dia>15</dia><mes>09</mes><anio>2024</anio></inicio>
+      <fin>   <dia>20</dia><mes>06</mes><anio>2025</anio></fin>
+    </fechas>
+  </modulo>
+
+</cfgs>
