@@ -1,0 +1,5 @@
+1. /ies/modulos/modulo[ciclo = /ies/ciclos/ciclo[nombre='Sistemas Microinformáticos y Redes']/@id]/nombre
+2. /ies/ciclos/ciclo[@id = /ies/modulos/modulo[nombre='Lenguajes de marcas y sistemas de gestión de información']/ciclo]/nombre
+3. /ies/modulos/modulo[ciclo = /ies/ciclos/ciclo[grado='Superior']/@id]/nombre
+4. /ies/modulos/modulo[ciclo = /ies/ciclos/ciclo[decretoTitulo/@año=2008]/@id]/nombre
+5. /ies/ciclos/ciclo[@id = /ies/modulos/modulo[curso=1]/ciclo]/grado
