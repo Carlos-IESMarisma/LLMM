@@ -1,0 +1,9 @@
+1. /ies/nombre
+2. /ies/web
+3. /ies/ciclos/ciclo/nombre
+4. /ies/ciclos/ciclo/@id
+5. /ies/ciclos/ciclo/decretoTitulo/@año
+6. /ies/ciclos/ciclo[grado='Medio']
+7. /ies/ciclos/ciclo[grado='Superior']/nombre
+8. /ies/ciclos/ciclo[decretoTitulo/@año < 2010]/nombre
+9. /ies/ciclos/ciclo[decretoTitulo/@año=2008 or decretoTitulo/@año=2010]/nombre
