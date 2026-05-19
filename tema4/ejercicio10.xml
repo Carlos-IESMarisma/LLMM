@@ -1,0 +1,18 @@
+<!DOCTYPE html><html lang="es"><body>
+<h2>Catálogo de CD</h2>
+<div id="demo"></div>
+<script>
+const xhttp = new XMLHttpRequest();
+xhttp.onload = function() {
+  const cds = this.responseXML.getElementsByTagName("CD");
+  let html = "<table border='1'><tr><th>Título</th><th>Artista</th><th>País</th><th>Compañía</th><th>Precio</th><th>Año</th></tr>";
+  for(let i = 0; i < cds.length; i++) {
+    const g = tag => cds[i].getElementsByTagName(tag)[0].childNodes[0].nodeValue;
+    html += `<tr><td>${g("TITLE")}</td><td>${g("ARTIST")}</td><td>${g("COUNTRY")}</td><td>${g("COMPANY")}</td><td>${g("PRICE")}€</td><td>${g("YEAR")}</td></tr>`;
+  }
+  html += "</table>";
+  document.getElementById("demo").innerHTML = html;
+};
+xhttp.open("GET", "https://www.w3schools.com/js/cd_catalog.xml");
+xhttp.send();
+</script></body></html>
