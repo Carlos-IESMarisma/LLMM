@@ -1,3 +1,4 @@
+a)
 <?xml version='1.0' encoding='UTF-8'?>
 <CDList>
   <CD>
@@ -18,6 +19,23 @@
         <nombre>Thriller</nombre>
         <duracion>5:57</duracion>
       </cancion>
+    </canciones>
+  </CD>
+</CDList>
+
+b)
+<?xml version='1.0' encoding='UTF-8'?>
+<CDList>
+  <!-- This CD has more tracks than in this file -->
+  <CD serial="B6B41B" disc-length="36:55">
+    <titulo>Thriller</titulo>
+    <artista>Michael Jackson</artista>
+    <anio>1982</anio>
+    <categoria>Pop / R&B</categoria>
+    <canciones>
+      <cancion numero="1" duracion="6:02">Wanna Be Startin' Somethin'</cancion>
+      <cancion numero="2" duracion="4:20">Baby Be Mine</cancion>
+      <cancion numero="3" duracion="5:57">Thriller</cancion>
     </canciones>
   </CD>
 </CDList>
